@@ -1,0 +1,26 @@
+{% extends "inventory/generic.html" %}
+
+{% block title %}{{ item.name }} - Edit{% endblock %}
+
+{% block content %}
+<form action="{% url 'item_edit_form' item_id=item.id %}" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>
+      <h1>Edit item - {{ item.name }}</h1>
+    </legend>
+    {% if error %}<p><strong>{{ error }}</strong></p>{% endif %}
+    <label>Name:
+      <input type="text" name="name" value="{{ item.name }}" required minlength="1" maxlength="100">
+    </label>
+    <label>Description
+      <input type="text" name="description" value="{{ item.description }}">
+    </label>
+    <label>Quantity
+      <input type="number" name="quantity" value="{{ item.quantity }}" required>
+    </label>
+  </fieldset>
+  <a href="{% url 'item_detail' item_id=item.id %}">Go back</a>
+  <input type="submit" value="Save">
+</form>
+{% endblock %}
