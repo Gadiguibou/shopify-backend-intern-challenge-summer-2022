@@ -29,18 +29,23 @@ To install Poetry, follow the instructions [here](https://python-poetry.org/docs
     ```
     poetry install
     ```
-
-3. Run the following commands to initialize the database (Django uses SQLite by default):
+    
+3. `cd` into `inventorytracker`, then run the following command to initialize the database (Django uses SQLite by default):
 
     ```
-    python manage.py makemigrations
-    python manage.py migrate
+    poetry run python manage.py migrate
     ```
 
 4. Run the following command to start the development server:
 
     ```
-    python manage.py runserver
+    poetry run python manage.py runserver
     ```
 
-5. Open a browser and navigate to http://localhost:8000/ to see the home page or http://localhost:8000/admin/ to see the admin page.
+5. Open a browser and navigate to http://localhost:8000/ to see the home page or http://localhost:8000/admin/ to see the admin page.[^1]
+
+[^1] To create a superuser account for the admin page use the following command:
+
+    ```
+    poetry run python manage.py createsuperuser
+    ```
