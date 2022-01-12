@@ -1,0 +1,8 @@
+{% extends "inventory/generic.html" %}
+
+{% block title %}Deletion successful!{% endblock %}
+
+{% block content %}
+<h1>Successfully deleted {{ item_name }}</h1>
+<a href={% url "index" %}>View all items</a>
+{% endblock %}

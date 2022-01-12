@@ -48,6 +48,23 @@ def item_edit_form(request, item_id):
     return HttpResponseRedirect(reverse("item_detail", args=(item.id,)))
 
 
+def item_delete(request, item_id):
+    item = get_object_or_404(InventoryItem, pk=item_id)
+    return render(request, "inventory/item_delete.html", {"item": item})
+
+
+def item_delete_form(request, item_id):
+    item = get_object_or_404(InventoryItem, pk=item_id)
+    item_name = item.name
+    item.delete()
+    return HttpResponseRedirect(reverse("item_delete_success", args=(item_name,)))
+
+
+def item_delete_success(request, item_name):
+    return render(
+        request, "inventory/item_delete_success.html", {"item_name": item_name}
+    )
+
 
 
 def _validate_item_form(name, quantity, description):
