@@ -49,3 +49,7 @@ To install Poetry, follow the instructions [here](https://python-poetry.org/docs
     ```
     poetry run python manage.py createsuperuser
     ```
+
+## Downloading the entire inventory as a CSV
+
+To download the inventory as a CSV, run the dev server, navigate to the home page (http://localhost:8000/) and click on the link named "Download inventory as CSV". 
