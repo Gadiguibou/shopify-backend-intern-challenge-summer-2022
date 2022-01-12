@@ -1,0 +1,23 @@
+{% extends "inventory/generic.html" %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+<h1>Item details - {{ item.name }}</h1>
+<dl>
+  <dt>Name</dt>
+  <dd>{{ item.name }}</dd>
+  <dt>Description</dt>
+  <dd>{{ item.description }}</dd>
+  <dt>Quantity</dt>
+  <dd>{{ item.quantity }}</dd>
+  <dt>Actions</dt>
+  <dd>
+    <ul>
+      <li><a href="{% url 'item_edit' item_id=item.id %}">Edit</a></li>
+      <li><a href="{% url 'item_delete' item_id=item.id %}">Delete</a></li>
+    </ul>
+  </dd>
+</dl>
+<a href="{% url 'index' %}">All items</a>
+{% endblock %}
