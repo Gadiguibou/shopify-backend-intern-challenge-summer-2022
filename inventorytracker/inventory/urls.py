@@ -15,4 +15,6 @@ urlpatterns = [
         name="item_delete_form",
     ),
     path("item/delete-success/<str:item_name>", views.item_delete_success, name="item_delete_success"),
+    path("item/new/", views.item_create, name="item_create"),
+    path("item/new/submit/", views.item_create_form, name="item_create_form"),
 ]

@@ -66,6 +66,37 @@ def item_delete_success(request, item_name):
     )
 
 
+def item_create(request):
+    return render(request, "inventory/item_create.html")
+
+
+def item_create_form(request):
+    try:
+        name = request.POST["name"]
+        quantity = request.POST["quantity"]
+        description = request.POST["description"]
+    except KeyError:
+        return render(
+            request,
+            "inventory/item_create.html",
+            {"error": "Please fill in all the required fields."},
+        )
+
+    print("passed without key errors")
+
+    error_message = _validate_item_form(name, quantity, description)
+    if error_message is not None:
+        return render(
+            request,
+            "inventory/item_create.html",
+            {"error": error_message},
+        )
+
+    item = InventoryItem(name=name, quantity=quantity, description=description)
+    item.save()
+
+    return HttpResponseRedirect(reverse("item_detail", args=(item.id,)))
+
 
 def _validate_item_form(name, quantity, description):
     error_message = ""
