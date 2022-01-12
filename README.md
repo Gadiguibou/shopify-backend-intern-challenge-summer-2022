@@ -19,7 +19,7 @@ To install Poetry, follow the instructions [here](https://python-poetry.org/docs
 1. Clone the project using the following command:
 
     ```
-    git clone <GITHUB_URL>
+    git clone git@github.com:Gadiguibou/shopify-backend-intern-challenge-summer-2022.git
     ```
 
     or by downloading it as a zip file from the GitHub UI and unzipping it into the directory of your choice.
