@@ -1,12 +1,31 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from inventory.models import InventoryItem
+
+import csv
+import io
 
 
 def index(request):
     all_items = InventoryItem.objects.all().order_by("name")
     return render(request, "inventory/items.html", {"items": all_items})
+
+
+def csv_item_list(request):
+    all_items = InventoryItem.objects.all().order_by("name")
+
+    response = HttpResponse(
+        content_type="text/csv",
+        headers={"Content-Disposition": 'attachment; filename="inventory.csv"'},
+    )
+
+    writer = csv.writer(response)
+    writer.writerow(["Name", "Description", "Quantity"])
+    for item in all_items:
+        writer.writerow([item.name, item.description, str(item.quantity)])
+
+    return response
 
 
 def item_detail(request, item_id):
