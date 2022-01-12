@@ -44,7 +44,7 @@ To install Poetry, follow the instructions [here](https://python-poetry.org/docs
 
 5. Open a browser and navigate to http://localhost:8000/ to see the home page or http://localhost:8000/admin/ to see the admin page.[^1]
 
-[^1] To create a superuser account for the admin page use the following command:
+[^1]: To create a superuser account for the admin page use the following command:
 
     ```
     poetry run python manage.py createsuperuser
